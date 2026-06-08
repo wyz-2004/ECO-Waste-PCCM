@@ -1,9 +1,5 @@
 # ECO-Waste-PCCM
 
-Auditable constrained completion for public-sector waste workbooks.
-
-This repository contains the algorithmic implementation and experiment scripts for ECO-Waste-PCCM. It is intentionally scoped to the method and reproducibility code only: manuscript formatting, Word/LaTeX layout, and camera-ready production scripts are not included.
-
 ## What Is Included
 
 ECO-Waste-PCCM treats workbook completion as a split-respecting decision loop:
@@ -83,8 +79,3 @@ Generated results are written under `outputs/`, mainly as CSV and JSON files.
 - `run_dual_head_analysis.py`: L1/L2 risk-head comparison.
 - `run_technical_depth_experiments.py`: component and decision-operator ablations.
 - `build_cost_aware_verification.py`: cost-aware verification summary tables.
-
-## Excluded From This Release
-
-The source project also contains scripts for manuscript generation, Word template conversion, LaTeX formatting, and figure placement. Those files are deliberately excluded here so the GitHub repository presents only the algorithm implementation and reproducibility path.
-

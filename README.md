@@ -10,10 +10,17 @@ The repository is intentionally small: it contains the data-processing,
 completion, projection, metric, and audit-queue code required to run the core
 workflow end to end.
 
+## Overview
+
+![ECO-Waste-PCCM overview](assets/figures/ecowaste_pccm_overview.jpeg)
+
 ## Project Layout
 
 ```text
 ECO-Waste-PCCM/
+  assets/
+    figures/
+      ecowaste_pccm_overview.jpeg
   config/
     default.json
   data/

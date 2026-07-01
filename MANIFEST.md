@@ -4,6 +4,7 @@
 
 - `run.py`
 - `config/default.json`
+- `assets/figures/ecowaste_pccm_overview.jpeg`
 - `src/ecowaste_pccm/data.py`
 - `src/ecowaste_pccm/model.py`
 - `src/ecowaste_pccm/constraints.py`

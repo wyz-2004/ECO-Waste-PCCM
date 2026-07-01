@@ -10,9 +10,9 @@ The repository is intentionally small: it contains the data-processing,
 completion, projection, metric, and audit-queue code required to run the core
 workflow end to end.
 
-## Overview
-
-![ECO-Waste-PCCM overview](assets/figures/ecowaste_pccm_overview.jpeg)
+<p align="center">
+  <img src="assets/figures/ecowaste_pccm_overview.jpeg" alt="ECO-Waste-PCCM" width="900">
+</p>
 
 ## Project Layout
 

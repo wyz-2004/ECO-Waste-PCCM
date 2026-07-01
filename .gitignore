@@ -11,6 +11,7 @@ venv/
 
 data/raw/*
 !data/raw/.gitkeep
+!data/raw/What_a_Waste_3.0_CITY_Dataset_&_Codebook.xlsx
 data/processed/
 
 outputs/*
@@ -27,4 +28,3 @@ logs/
 *.log
 *.out
 *.synctex.gz
-

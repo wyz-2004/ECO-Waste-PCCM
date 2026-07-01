@@ -1,0 +1,26 @@
+{
+  "data_file": "data/raw/What_a_Waste_3.0_CITY_Dataset_&_Codebook.xlsx",
+  "output_dir": "outputs/main",
+  "seed": 42,
+  "test_fraction": 0.2,
+  "validation_fraction": 0.15,
+  "min_observed_per_feature": 8,
+  "feature_prefixes": [
+    "population_number_of_people",
+    "population_number_of_people_UN",
+    "msw_total_",
+    "composition_msw_",
+    "waste_collection_coverage_",
+    "separation_amount_",
+    "separation_breakdown_",
+    "informal_sector_",
+    "formal_sector_",
+    "waste_treatment_",
+    "waste_uncollected_percent",
+    "transport_"
+  ],
+  "svd_rank": 6,
+  "svd_iterations": 25,
+  "knn_neighbors": 8,
+  "audit_budget": 120
+}

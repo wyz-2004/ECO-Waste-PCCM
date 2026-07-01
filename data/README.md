@@ -1,20 +1,10 @@
-# Data Directory
+# Data
 
-Place public raw inputs in `data/raw/` before running the experiments.
+This release keeps only the raw input required by the main ECO-Waste-PCCM
+workbook-completion experiment:
 
-Expected What a Waste inputs:
+- `data/raw/What_a_Waste_3.0_CITY_Dataset_&_Codebook.xlsx`
 
-- `What_a_Waste_3.0_CITY_Dataset_&_Codebook.xlsx`
-- `What_a_Waste_3.0_COUNTRY_Dataset_&_Codebook.xlsx`
-
-Expected Defra / WasteDataFlow inputs for external validation:
-
-- `Waste_collection_and_recycling_England_data_2019-20.csv`
-- `Waste_collection_and_recycling_England_data_2020-21.csv`
-- `Waste_collection_and_recycling_England_data_2021-22.csv`
-- `Waste_collection_and_recycling_England_data_2022_23.csv`
-- `Waste+Collection+data+England+2023-24v2.csv`
-- `Waste+Collection+data+England+2024-25.csv`
-
-Raw datasets are not committed here. Follow the redistribution terms of the original data providers.
-
+The file is the World Bank What a Waste 3.0 city workbook. The project reads the
+`City dataset` sheet, builds a typed city-feature matrix, and writes completed
+workbook and audit-queue outputs under `outputs/main/`.

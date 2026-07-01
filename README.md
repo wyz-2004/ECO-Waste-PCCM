@@ -1,81 +1,82 @@
 # ECO-Waste-PCCM
 
-## What Is Included
+ECO-Waste-PCCM is a compact main-experiment project for auditable constrained
+completion of public-sector waste workbooks. It reads the World Bank What a
+Waste 3.0 city workbook, completes missing numeric cells, projects outputs into
+bounded and closure-consistent states, and returns a ranked audit queue for
+human review.
 
-ECO-Waste-PCCM treats workbook completion as a split-respecting decision loop:
+This release contains only the main experiment. Extra evaluation suites,
+manuscript-formatting scripts, and paper-production assets are not part of this
+project directory.
 
-1. Build typed city, country, and Defra workbook matrices from public waste data.
-2. Fit cross-fitted completion experts under shared masks and validation splits.
-3. Select risk-specific L1/L2 completions rather than a single generic imputation target.
-4. Project predictions into feasible accounting states with shared constraint operators.
-5. Attach guarded residual-risk evidence as an audit signal.
-6. Rank cells for reveal-refit human verification without automatically replacing official data.
-
-The implementation is designed for reproducible evaluation, not for automatic public-sector data correction.
-
-## Repository Layout
+## Project Layout
 
 ```text
-.
-├── data/
-│   └── raw/                 # Place public raw input files here
-├── outputs/                 # Generated tables, protocol files, and summaries
-├── scripts/
-│   ├── ecowaste_core.py
-│   ├── run_experiment.py
-│   ├── run_longterm_experiment.py
-│   ├── run_aaai_experiments.py
-│   ├── run_dual_head_analysis.py
-│   ├── run_technical_depth_experiments.py
-│   ├── run_defra_external_validation.py
-│   ├── run_country_generalization.py
-│   ├── run_evidence_enhancement.py
-│   ├── build_cost_aware_verification.py
-│   └── run_algorithm_experiments.ps1
-└── requirements.txt
+ECO-Waste-PCCM/
+  config/
+    default.json
+  data/
+    raw/
+      What_a_Waste_3.0_CITY_Dataset_&_Codebook.xlsx
+  outputs/
+    main/
+  src/
+    ecowaste_pccm/
+      data.py
+      model.py
+      constraints.py
+      metrics.py
+      pipeline.py
+  run.py
+  requirements.txt
 ```
 
-## Data
+## Method Scope
 
-The scripts expect public raw files under `data/raw/`. See `data/README.md` for the expected filenames. Raw third-party datasets are not committed in this release directory, because redistribution depends on the original data providers.
+The main pipeline performs one workflow:
 
-## Environment
+1. Read the What a Waste 3.0 city workbook.
+2. Build a typed city-feature matrix from numeric workbook fields.
+3. Standardize percentage fields to proportions and fit split-respecting completion experts.
+4. Learn simplex weights on held-out validation cells.
+5. Project delivered values into bounded and closure-consistent states.
+6. Evaluate the held-out main task.
+7. Export the completed workbook and ranked audit queue.
+
+The output is an auditable workbook state, not an automatic replacement for
+official records.
+
+## Setup
 
 ```powershell
+cd E:\waste\ECO-Waste-PCCM
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
-The scripts use `ECOWASTE_PROJECT_ROOT` to find `data/` and `outputs/`. The provided PowerShell runner sets this variable automatically.
-
 ## Run
 
-Run the main algorithmic experiment suite:
+Run the complete main experiment with one command:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\run_algorithm_experiments.ps1
+python run.py
 ```
 
-Run individual experiments when you only need one section:
+Optional overrides:
 
 ```powershell
-python .\scripts\run_longterm_experiment.py
-python .\scripts\run_defra_external_validation.py
-python .\scripts\run_country_generalization.py
-python .\scripts\run_evidence_enhancement.py
+python run.py --seed 7 --output-dir outputs/main_seed7
 ```
 
-Generated results are written under `outputs/`, mainly as CSV and JSON files.
+## Outputs
 
-## Main Scripts
+The default run writes to `outputs/main/`:
 
-- `ecowaste_core.py`: shared data loading, feature typing, constraints, risk construction, and utility functions.
-- `run_experiment.py`: core PCCM pipeline, baselines, cross-fitted experts, projection, evidence, acquisition, and protocol outputs.
-- `run_longterm_experiment.py`: city random-mask and structured missingness experiments.
-- `run_defra_external_validation.py`: Defra external workbook validation and latest-year audit simulation.
-- `run_country_generalization.py`: country-level transfer and stress-boundary experiments.
-- `run_evidence_enhancement.py`: guarded residual-risk evidence analysis.
-- `run_dual_head_analysis.py`: L1/L2 risk-head comparison.
-- `run_technical_depth_experiments.py`: component and decision-operator ablations.
-- `build_cost_aware_verification.py`: cost-aware verification summary tables.
+- `completed_workbook.csv`: original reported cells plus completed missing cells.
+- `audit_queue.csv`: ranked missing cells for human review.
+- `holdout_predictions.csv`: split-safe held-out predictions for the main task.
+- `feature_dictionary.csv`: feature type, bounds, and closure metadata.
+- `main_metrics.json`: machine-readable metric summary.
+- `run_summary.txt`: short human-readable summary.

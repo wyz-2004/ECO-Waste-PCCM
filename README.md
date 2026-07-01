@@ -1,10 +1,9 @@
 # ECO-Waste-PCCM
 
-ECO-Waste-PCCM is a compact main-experiment project for auditable constrained
-completion of public-sector waste workbooks. It reads the World Bank What a
-Waste 3.0 city workbook, completes missing numeric cells, projects outputs into
-bounded and closure-consistent states, and returns a ranked audit queue for
-manual checking.
+ECO-Waste-PCCM is a Python toolkit for completing missing values in municipal
+waste workbooks while preserving simple accounting constraints. It loads the
+World Bank What a Waste 3.0 city dataset, produces a completed workbook, and
+exports a ranked list of cells that may need manual checking.
 
 <p align="center">
   <img src="assets/figures/ecowaste_pccm_overview.jpeg" alt="ECO-Waste-PCCM" width="900">

@@ -6,10 +6,6 @@ Waste 3.0 city workbook, completes missing numeric cells, projects outputs into
 bounded and closure-consistent states, and returns a ranked audit queue for
 manual checking.
 
-The repository is intentionally small: it contains the data-processing,
-completion, projection, metric, and audit-queue code required to run the core
-workflow end to end.
-
 <p align="center">
   <img src="assets/figures/ecowaste_pccm_overview.jpeg" alt="ECO-Waste-PCCM" width="900">
 </p>

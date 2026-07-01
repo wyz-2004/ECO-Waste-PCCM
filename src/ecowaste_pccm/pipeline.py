@@ -142,7 +142,7 @@ def _audit_queue(
                 "uncertainty_score": float(uncertainty_norm[r, c]),
                 "constraint_group": group,
                 "why_selected": "; ".join(reasons),
-                "suggested_reviewer_action": "verify source value before publication",
+                "suggested_audit_action": "verify source value before publication",
             }
         )
     return pd.DataFrame(rows)
@@ -266,8 +266,8 @@ def run_main_experiment(root: Path, config: dict) -> PipelineResult:
         "",
         "Outputs:",
         "- completed_workbook.csv: workbook with reported cells preserved and missing cells completed",
-        "- audit_queue.csv: ranked missing cells for human verification",
-        "- holdout_predictions.csv: split-safe main-experiment holdout predictions",
+        "- audit_queue.csv: ranked missing cells for manual checking",
+        "- holdout_predictions.csv: split-safe held-out completion predictions",
         "- feature_dictionary.csv: feature type, bounds, and closure metadata",
         "- main_metrics.json: machine-readable run summary",
     ]

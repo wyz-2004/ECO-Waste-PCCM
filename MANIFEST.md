@@ -1,6 +1,6 @@
-# Release Manifest
+# Project Manifest
 
-## Included Main-Experiment Files
+## Core Files
 
 - `run.py`
 - `config/default.json`
@@ -14,6 +14,5 @@
 
 ## Scope
 
-This directory is a compact main-experiment release. Running `python run.py`
-produces the completed workbook, split-safe holdout metrics, feature dictionary,
-and reviewer-facing audit queue.
+Running `python run.py` produces the completed workbook, split-safe holdout
+metrics, feature dictionary, and ranked audit queue.

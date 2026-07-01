@@ -4,11 +4,11 @@ ECO-Waste-PCCM is a compact main-experiment project for auditable constrained
 completion of public-sector waste workbooks. It reads the World Bank What a
 Waste 3.0 city workbook, completes missing numeric cells, projects outputs into
 bounded and closure-consistent states, and returns a ranked audit queue for
-human review.
+manual checking.
 
-This release contains only the main experiment. Extra evaluation suites,
-manuscript-formatting scripts, and paper-production assets are not part of this
-project directory.
+The repository is intentionally small: it contains the data-processing,
+completion, projection, metric, and audit-queue code required to run the core
+workflow end to end.
 
 ## Project Layout
 
@@ -41,7 +41,7 @@ The main pipeline performs one workflow:
 3. Standardize percentage fields to proportions and fit split-respecting completion experts.
 4. Learn simplex weights on held-out validation cells.
 5. Project delivered values into bounded and closure-consistent states.
-6. Evaluate the held-out main task.
+6. Evaluate the held-out completion task.
 7. Export the completed workbook and ranked audit queue.
 
 The output is an auditable workbook state, not an automatic replacement for
@@ -58,7 +58,7 @@ pip install -r requirements.txt
 
 ## Run
 
-Run the complete main experiment with one command:
+Run the complete workflow:
 
 ```powershell
 python run.py
@@ -75,8 +75,8 @@ python run.py --seed 7 --output-dir outputs/main_seed7
 The default run writes to `outputs/main/`:
 
 - `completed_workbook.csv`: original reported cells plus completed missing cells.
-- `audit_queue.csv`: ranked missing cells for human review.
-- `holdout_predictions.csv`: split-safe held-out predictions for the main task.
+- `audit_queue.csv`: ranked missing cells for manual checking.
+- `holdout_predictions.csv`: split-safe held-out predictions for the completion task.
 - `feature_dictionary.csv`: feature type, bounds, and closure metadata.
 - `main_metrics.json`: machine-readable metric summary.
 - `run_summary.txt`: short human-readable summary.
